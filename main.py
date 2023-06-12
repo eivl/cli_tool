@@ -2,7 +2,7 @@ from typing import Optional
 
 import typer
 
-from movie import movie_search
+import movie
 
 app = typer.Typer()
 
@@ -24,8 +24,16 @@ def bye():
 @app.command()
 def movie_rating(movie_name: str):
     """Get the rating for a movie."""
-    movie = movie_search(movie_name)
+    movie = movie.movie_search(movie_name)
     typer.echo(f"Rating for {movie_name.title()} {movie['vote_average']}")
+
+@app.command()
+def movie_details(movie_name: str):
+    """Skal gi en detaljert beskrivelse av en film."""
+    film = movie.movie_search(movie_name)
+    detail = movie.movie_details(film)
+    typer.echo(detail)
+    
 
 
 if __name__ == "__main__":
