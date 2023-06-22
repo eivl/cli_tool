@@ -24,8 +24,8 @@ def bye():
 @app.command()
 def movie_rating(movie_name: str):
     """Get the rating for a movie."""
-    movie = movie.movie_search(movie_name)
-    typer.echo(f"Rating for {movie_name.title()} {movie['vote_average']}")
+    my_movie = movie.movie_search(movie_name)
+    typer.echo(f"Rating for {movie_name.title()} {my_movie['vote_average']}")
 
 @app.command()
 def movie_details(movie_name: str):
