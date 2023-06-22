@@ -1,3 +1,5 @@
+import os
+import sys
 from typing import Optional
 
 import typer
@@ -34,7 +36,16 @@ def movie_details(movie_name: str):
     film = movie.movie_search(movie_name)
     detail = movie.movie_details(film)
     typer.echo(detail)
-    
+
+
+def check_powershell():
+    my_path = os.getenv('PSModulePath')
+    my_split_path = my_path.split(os.pathsep)
+    if len(my_split_path) >= 3:
+        return True
+    else:
+        return False
+
 
 if __name__ == "__main__":
     app()
