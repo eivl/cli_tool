@@ -1,4 +1,5 @@
 import os
+import subprocess
 import sys
 from typing import Optional
 
@@ -47,5 +48,33 @@ def check_powershell():
         return False
 
 
+def install_powershell():
+    typer.echo('Installing powershell')
+    result = subprocess.run(
+        'winget install --id=Microsoft.PowerShell -e',
+        shell=True,
+        capture_output=True,
+    )
+    winget_result = result.stdout.decode()
+
+    if 'package already installed' in winget_result:
+        typer.echo('Powershell already installed, please use it instead.')
+        return True
+    elif 'Successfully installed' in winget_result:
+        typer.echo('Powershell installed, restart into powershell to use it.')
+        return True
+    elif not winget_result:
+        typer.echo('Winget error, PowerShell not installed')
+        return False
+    else:
+        return False
+
+
 if __name__ == "__main__":
-    app()
+    if check_powershell():
+        app()
+    else:
+        typer.echo("You are not running this in powershell")
+        pws_result = install_powershell()
+        if not pws_result:
+            typer.echo('https://github.com/microsoft/winget-cli/releases')
