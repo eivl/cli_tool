@@ -27,6 +27,7 @@ def movie_rating(movie_name: str):
     my_movie = movie.movie_search(movie_name)
     typer.echo(f"Rating for {movie_name.title()} {my_movie['vote_average']}")
 
+
 @app.command()
 def movie_details(movie_name: str):
     """Skal gi en detaljert beskrivelse av en film."""
@@ -35,7 +36,5 @@ def movie_details(movie_name: str):
     typer.echo(detail)
     
 
-
 if __name__ == "__main__":
     app()
-
