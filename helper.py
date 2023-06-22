@@ -33,3 +33,15 @@ def install_powershell():
         return False
     else:
         return False
+
+
+def check_command(command: str):
+    result = subprocess.run(
+        f'pwsh -Command "Get-Command -ErrorAction SilentlyContinue {command}"',
+        shell=True,
+        capture_output=True,
+    )
+    if result.returncode == 0:
+        return True
+    else:
+        return False

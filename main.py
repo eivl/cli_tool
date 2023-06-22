@@ -1,6 +1,7 @@
 from typing import Optional
 import movie
 from helper import (
+    check_command,
     check_powershell,
     install_powershell,
 )
