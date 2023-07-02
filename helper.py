@@ -5,7 +5,7 @@ import typer
 
 
 def check_powershell():
-    my_path = os.getenv('PSModulePath')
+    my_path = os.getenv('PSModulePath', default='')
     my_split_path = my_path.split(os.pathsep)
     if len(my_split_path) >= 3:
         return True
