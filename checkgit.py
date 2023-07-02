@@ -20,6 +20,3 @@ def check_command(command):
         return True
     else:
         return False 
-
-print(check_command('git -v'))
-
