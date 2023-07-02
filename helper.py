@@ -33,3 +33,20 @@ def install_powershell():
         return False
     else:
         return False
+
+
+def check_pwsh_command(command: str) -> bool:
+    """
+    Check if a command is available in powershell
+    :param command: a command to check, like git or winget.
+    :return: True if available, False if not.
+    """
+    result = subprocess.run(
+        f'pwsh -Command "Get-Command -ErrorAction SilentlyContinue {command}"',
+        shell=True,
+        capture_output=True,
+    )
+    if result.returncode == 0:
+        return True
+    else:
+        return False
