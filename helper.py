@@ -35,7 +35,7 @@ def install_powershell():
         return False
 
 
-def check_command(command: str) -> bool:
+def check_pwsh_command(command: str) -> bool:
     """
     Check if a command is available in powershell
     :param command: a command to check, like git or winget.
