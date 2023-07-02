@@ -9,11 +9,7 @@ def check_git():
     else:
         return False 
 
-if check_git():
-    print("Git is installed.")    
-else:
-    print("Git is not installed.")
-   
+
 def check_command(command):
     result = subprocess.run(command, shell=True)
     if result.returncode == 0:
