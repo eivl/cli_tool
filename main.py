@@ -1,10 +1,11 @@
 from typing import Optional
 import movie
 from helper import (
-    check_command,
+    check_pwsh_command,
     check_powershell,
     install_powershell,
 )
+from checkgit import check_git
 
 import typer
 
