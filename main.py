@@ -78,3 +78,4 @@ if __name__ == "__main__":
         pws_result = install_powershell()
         if not pws_result:
             typer.echo('https://github.com/microsoft/winget-cli/releases')
+
